@@ -8,13 +8,20 @@ import { CountryService } from '../../services/country.service';
 })
 export class ByCountryComponent {
   term: string = 'Hola mundo';
+  errorExists: boolean = false;
 
   constructor(private countryService: CountryService) {}
 
   buscar() {
+    this.errorExists = false;
     console.log(this.term);
-    this.countryService.searchCountry(this.term).subscribe((resp) => {
-      console.log(resp);
-    });
+    this.countryService.searchCountry(this.term).subscribe(
+      (resp) => {
+        console.log(resp);
+      },
+      (err) => {
+        this.errorExists = true;
+      }
+    );
   }
 }
