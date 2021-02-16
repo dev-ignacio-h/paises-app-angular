@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -22,7 +23,8 @@ import { CountryComponent } from './pages/country/country.component';
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ],
 })
 export class CountryModule {}

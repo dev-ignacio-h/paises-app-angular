@@ -18,9 +18,9 @@
   No se encontró nada con el término {{ term }}
 </div>
 
-<div *ngIf="!errorExists" class="row">
+<div *ngIf="countries.length" class="row">
   <div class="col">
-    <table class="table table-hover">
+    <table  class="table table-hover">
       <thead>
         <tr>
           <th>#</th>
@@ -31,12 +31,14 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>bandera</td>
-          <td>nombre</td>
-          <td>12345645</td>
-          <td><a href="#">Ver...</a></td>
+        <tr *ngFor="let country of countries; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>
+            <img class="small-flag" [src]="country.flag" alt="" />
+          </td>
+          <td>{{ country.name }}</td>
+          <td>{{ country.population | number }}</td>
+          <td><a [routerLink]="['/country', country.alpha2Code]">Ver...</a></td>
         </tr>
       </tbody>
     </table>

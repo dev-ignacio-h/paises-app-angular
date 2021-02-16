@@ -1,3 +1,4 @@
+import { Country } from './../../interfaces/country.interface';
 import { Component } from '@angular/core';
 import { CountryService } from '../../services/country.service';
 
@@ -7,8 +8,9 @@ import { CountryService } from '../../services/country.service';
   styles: [],
 })
 export class ByCountryComponent {
-  term: string = 'Hola mundo';
+  term: string = '';
   errorExists: boolean = false;
+  countries: Country[] = [];
 
   constructor(private countryService: CountryService) {}
 
@@ -17,10 +19,12 @@ export class ByCountryComponent {
     console.log(this.term);
     this.countryService.searchCountry(this.term).subscribe(
       (countries) => {
+        this.countries = countries;
         console.log(countries);
       },
       (err) => {
         this.errorExists = true;
+        this.countries = [];
       }
     );
   }
