@@ -16,8 +16,8 @@ export class ByCountryComponent {
     this.errorExists = false;
     console.log(this.term);
     this.countryService.searchCountry(this.term).subscribe(
-      (resp) => {
-        console.log(resp);
+      (countries) => {
+        console.log(countries);
       },
       (err) => {
         this.errorExists = true;
