@@ -14,14 +14,11 @@ export class ByCountryComponent {
 
   constructor(private countryService: CountryService) {}
 
-  buscar() {
+  buscar(term: string) {
     this.errorExists = false;
-    console.log(this.term);
-    this.countryService.searchCountry(this.term).subscribe(
-      (countries) => {
-        this.countries = countries;
-        console.log(countries);
-      },
+    this.term = term;
+    this.countryService.searchCountry(term).subscribe(
+      (countries) => (this.countries = countries),
       (err) => {
         this.errorExists = true;
         this.countries = [];
