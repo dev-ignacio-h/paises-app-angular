@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
-import { debounceTime } from 'rxjs/operators'
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-country-input',
@@ -18,12 +18,12 @@ export class CountryInputComponent implements OnInit {
   ngOnInit(): void {
     this.debuncer
       .pipe(debounceTime(300))
-      .subscribe(value => this.onDebounce.emit(value))
+      .subscribe((value) => this.onDebounce.emit(value));
   }
   buscar() {
     this.onEnter.emit(this.term);
   }
   keyPressed() {
-    this.debuncer.next(this.term)
+    this.debuncer.next(this.term);
   }
 }
