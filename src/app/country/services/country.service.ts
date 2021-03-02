@@ -5,22 +5,25 @@ import { Observable } from 'rxjs';
 import { Country } from './../interfaces/country.interface';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CountryService {
-
   private apiUrl: string = 'https://restcountries.eu/rest/v2';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   searchCountry(term: string): Observable<Country[]> {
-    const url = `${this.apiUrl}/name/${term}`
+    const url = `${this.apiUrl}/name/${term}`;
     return this.http.get<Country[]>(url);
   }
 
   searchbyCapital(term: string): Observable<Country[]> {
-    const url = `${this.apiUrl}/capital/${term}`
+    const url = `${this.apiUrl}/capital/${term}`;
     return this.http.get<Country[]>(url);
   }
 
+  getCountryByCode(code: string): Observable<Country> {
+    const url = `${this.apiUrl}/alpha/${code}`;
+    return this.http.get<Country>(url);
+  }
 }
