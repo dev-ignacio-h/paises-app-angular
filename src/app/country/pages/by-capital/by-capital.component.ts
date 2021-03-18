@@ -14,7 +14,7 @@ export class ByCapitalComponent {
 
   constructor(private countryService: CountryService) {}
 
-  buscar(term: string) {
+  search(term: string) {
     this.errorExists = false;
     this.term = term;
     this.countryService.searchbyCapital(term).subscribe(

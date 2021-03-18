@@ -19,10 +19,10 @@ export class CountryInputComponent implements OnInit {
 
   ngOnInit(): void {
     this.debuncer
-      .pipe(debounceTime(300))
+      .pipe(debounceTime(100))
       .subscribe((value) => this.onDebounce.emit(value));
   }
-  buscar() {
+  search() {
     this.onEnter.emit(this.term);
   }
   keyPressed() {
